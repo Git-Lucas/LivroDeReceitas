@@ -5,11 +5,11 @@ VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4CE02D74-B5D1-4479-98BF-BE208F31180A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivroDeReceitas.Domain", "src\LivroDeReceitas.Domain\LivroDeReceitas.Domain.csproj", "{F5469C7C-AFAA-4260-8472-89A799B6FB71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivroDeReceitas.Domain", "src\LivroDeReceitas.Domain\LivroDeReceitas.Domain.csproj", "{F5469C7C-AFAA-4260-8472-89A799B6FB71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivroDeReceitas.Infrastructure", "src\LivroDeReceitas.Infrastructure\LivroDeReceitas.Infrastructure.csproj", "{6DA88ED9-D2CF-431C-83BC-43DF44ABD6F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivroDeReceitas.Infrastructure", "src\LivroDeReceitas.Infrastructure\LivroDeReceitas.Infrastructure.csproj", "{6DA88ED9-D2CF-431C-83BC-43DF44ABD6F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivroDeReceitas.Api", "src\LivroDeReceitas.Api\LivroDeReceitas.Api.csproj", "{7D063C4A-957F-4F2C-956B-2A578ED316DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivroDeReceitas.Api", "src\LivroDeReceitas.Api\LivroDeReceitas.Api.csproj", "{7D063C4A-957F-4F2C-956B-2A578ED316DC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{817A4921-2972-4CBF-9FA3-65B4AF8CFEBA}"
 EndProject
