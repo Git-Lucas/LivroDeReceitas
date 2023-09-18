@@ -4,11 +4,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace LivroDeReceitas.Infrastructure.Data;
 
-public class SqlServerAdapter : DbContext
+public class EfSqlServerAdapter : DbContext
 {
     public IConfigurationRoot Config { get; }
 
-    public SqlServerAdapter()
+    public EfSqlServerAdapter()
     {
         var builder = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
