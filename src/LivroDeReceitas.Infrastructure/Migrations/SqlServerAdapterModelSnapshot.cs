@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LivroDeReceitas.Infrastructure.Migrations
 {
-    [DbContext(typeof(SqlServerAdapter))]
+    [DbContext(typeof(EfSqlServerAdapter))]
     partial class SqlServerAdapterModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

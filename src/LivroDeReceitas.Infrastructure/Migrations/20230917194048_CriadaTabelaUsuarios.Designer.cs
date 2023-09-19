@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LivroDeReceitas.Infrastructure.Migrations
 {
-    [DbContext(typeof(SqlServerAdapter))]
+    [DbContext(typeof(EfSqlServerAdapter))]
     [Migration("20230917194048_CriadaTabelaUsuarios")]
     partial class CriadaTabelaUsuarios
     {
