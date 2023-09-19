@@ -7,15 +7,18 @@ namespace LivroDeReceitas.Infrastructure.Data.Repositories;
 public class UsuarioDataSqlServer : IUsuarioData
 {
     private readonly EfSqlServerAdapter _context;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public UsuarioDataSqlServer(EfSqlServerAdapter context)
+    public UsuarioDataSqlServer(EfSqlServerAdapter context, IUnitOfWork unitOfWork)
     {
         _context = context;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task CreateAsync(Usuario usuario)
     {
         await _context.Usuarios.AddAsync(usuario);
+        await _unitOfWork.SaveChangesAsync();
     }
 
     public async Task<bool> ExistsByEmail(string email)

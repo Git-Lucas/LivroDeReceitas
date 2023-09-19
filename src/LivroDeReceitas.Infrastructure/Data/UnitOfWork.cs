@@ -1,6 +1,8 @@
-﻿namespace LivroDeReceitas.Infrastructure.Data;
+﻿using LivroDeReceitas.Domain.Interfaces.Data;
 
-public sealed class UnitOfWork : IDisposable
+namespace LivroDeReceitas.Infrastructure.Data;
+
+public sealed class UnitOfWork : IUnitOfWork
 {
     private readonly EfSqlServerAdapter _context;
 
@@ -9,8 +11,8 @@ public sealed class UnitOfWork : IDisposable
         _context = context;
     }
 
-    public void Dispose()
+    public async Task<int> SaveChangesAsync()
     {
-        throw new NotImplementedException();
+        return await _context.SaveChangesAsync();
     }
 }
