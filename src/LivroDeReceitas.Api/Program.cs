@@ -1,4 +1,7 @@
+using AutoMapper;
 using LivroDeReceitas.Api.Exceptions;
+using LivroDeReceitas.Api.Services;
+using LivroDeReceitas.Api.Services.Usuarios;
 using LivroDeReceitas.Domain.Interfaces.Data;
 using LivroDeReceitas.Infrastructure.Data;
 using LivroDeReceitas.Infrastructure.Data.Repositories;
@@ -9,6 +12,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<EfSqlServerAdapter>();
 builder.Services.AddScoped<IUsuarioData, UsuarioDataSqlServer>();
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped(x => new MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new AutoMapperConfiguration());
+}).CreateMapper());
+builder.Services.AddScoped<PasswordEncryptor>();
+builder.Services.AddScoped(option => 
+    new TokenService(builder.Configuration.GetRequiredSection("Configurations:TokenKey").Value!));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
