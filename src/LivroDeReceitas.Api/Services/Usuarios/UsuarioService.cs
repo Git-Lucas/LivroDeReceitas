@@ -1,12 +1,13 @@
 ﻿using LivroDeReceitas.Api.DTOs.Usuarios;
+using LivroDeReceitas.Api.Exceptions;
 using LivroDeReceitas.Api.Validators.Usuarios;
 using LivroDeReceitas.Domain.Interfaces.Data;
 
 namespace LivroDeReceitas.Api.Services.Usuarios;
 
-public class UsuarioService : BaseService
+public class UsuarioService
 {
-    public UsuarioService(IUnitOfWork unitOfWork) : base(unitOfWork)
+    public UsuarioService()
     {
     }
 
@@ -17,7 +18,8 @@ public class UsuarioService : BaseService
 
         if (!result.IsValid)
         {
-            var errors = result.Errors.Select(x => x.ErrorMessage);
+            var messageErrors = result.Errors.Select(x => x.ErrorMessage).ToList();
+            throw new ValidatorErrors(messageErrors);
         }
     }
 }

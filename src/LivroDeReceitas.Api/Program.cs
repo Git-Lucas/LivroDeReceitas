@@ -1,3 +1,4 @@
+using LivroDeReceitas.Api.Exceptions;
 using LivroDeReceitas.Domain.Interfaces.Data;
 using LivroDeReceitas.Infrastructure.Data;
 using LivroDeReceitas.Infrastructure.Data.Repositories;
@@ -8,11 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<EfSqlServerAdapter>();
 builder.Services.AddScoped<IUsuarioData, UsuarioDataSqlServer>();
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
 
 var app = builder.Build();
 
