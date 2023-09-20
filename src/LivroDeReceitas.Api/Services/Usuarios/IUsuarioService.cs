@@ -4,5 +4,5 @@ namespace LivroDeReceitas.Api.Services.Usuarios;
 
 public interface IUsuarioService
 {
-    Task CreateUsuarioAsync(CreateUsuarioRequest usuarioRequest);
+    Task<CreateUsuarioResponse> CreateUsuarioAsync(CreateUsuarioRequest usuarioRequest);
 }

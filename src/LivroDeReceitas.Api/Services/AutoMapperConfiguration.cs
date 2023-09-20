@@ -2,7 +2,7 @@
 using LivroDeReceitas.Api.DTOs.Usuarios;
 using LivroDeReceitas.Domain.Models;
 
-namespace LivroDeReceitas.Api.Services.AutoMapper
+namespace LivroDeReceitas.Api.Services
 {
     public class AutoMapperConfiguration : Profile
     {

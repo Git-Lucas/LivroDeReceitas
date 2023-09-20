@@ -18,7 +18,7 @@ public class UsuariosController : ControllerBase
     [HttpGet("")]
     public async Task<IActionResult> GetAsync()
     {
-        await _usuarioService.CreateUsuarioAsync(new CreateUsuarioRequest
+        var response = await _usuarioService.CreateUsuarioAsync(new CreateUsuarioRequest
         {
             Email = "lucas@gmail.com",
             Nome = "Lucas",
@@ -26,6 +26,6 @@ public class UsuariosController : ControllerBase
             Telefone = "31 98549-5824"
         });
 
-        return Ok();
+        return Ok(response);
     }
 }
