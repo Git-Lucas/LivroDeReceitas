@@ -8,21 +8,22 @@ namespace LivroDeReceitas.Api.Controllers;
 [ApiController]
 public class UsuariosController : ControllerBase
 {
-    public UsuariosController()
-    {
+    private readonly IUsuarioService _usuarioService;
 
+    public UsuariosController([FromServices] IUsuarioService usuarioService)
+    {
+        _usuarioService = usuarioService;
     }
 
     [HttpGet("")]
     public async Task<IActionResult> GetAsync()
     {
-        var usuarioService = new UsuarioService();
-        await usuarioService.CreateUsuarioAsync(new CreateUsuarioRequest
+        await _usuarioService.CreateUsuarioAsync(new CreateUsuarioRequest
         {
-            Email = "",
-            Nome = "",
-            Senha = "",
-            Telefone = ""
+            Email = "lucas@gmail.com",
+            Nome = "Lucas",
+            Senha = "123456",
+            Telefone = "31 98549-5824"
         });
 
         return Ok();
