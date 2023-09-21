@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LivroDeReceitas.Api.Controllers;
 
-[Route("")]
+[Route("[controller]")]
 [ApiController]
 public class UsuariosController : ControllerBase
 {
@@ -15,17 +15,12 @@ public class UsuariosController : ControllerBase
         _usuarioService = usuarioService;
     }
 
-    [HttpGet("")]
-    public async Task<IActionResult> GetAsync()
+    [HttpPost]
+    [ProducesResponseType(typeof(CreateUsuarioResponse), StatusCodes.Status201Created)]
+    public async Task<IActionResult> CreateUsuarioAsync([FromBody] CreateUsuarioRequest request)
     {
-        var response = await _usuarioService.CreateUsuarioAsync(new CreateUsuarioRequest
-        {
-            Email = "lucas@gmail.com",
-            Nome = "Lucas",
-            Senha = "123456",
-            Telefone = "31 98549-5824"
-        });
+        var response = await _usuarioService.CreateUsuarioAsync(request);
 
-        return Ok(response);
+        return Created(string.Empty, response);
     }
 }
