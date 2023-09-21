@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "e3808372-8e47-497f-b042-f244ef3ab095",
+		"name": "LivroDeReceitasRequest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16820934"
+	},
+	"item": [
+		{
+			"name": "CreateUsuario",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"//31 98888-8888\r",
+							"var ddd = _.random(10, 99)\r",
+							"var first5digits = _.random(10000, 99999)\r",
+							"var last4digits = _.random(1000, 9999)\r",
+							"\r",
+							"var phone = ddd + \" \" + first5digits + \"-\" + last4digits\r",
+							"\r",
+							"pm.environment.set(\"randomPhoneBR\", phone)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validar se a requisição foi feita com sucesso\", function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"    pm.response.to.have.jsonBody(\"token\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"{{$randomFullName}}\",\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"telefone\": \"{{randomPhoneBR}}\",\r\n  \"senha\": \"{{$randomPassword}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}usuarios",
+					"host": [
+						"{{BASE_URL}}usuarios"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "https://localhost:7297/",
+			"type": "string"
+		}
+	]
+}
