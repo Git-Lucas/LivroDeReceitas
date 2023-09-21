@@ -31,7 +31,10 @@ public class ExceptionFilter : IExceptionFilter
         var errors = context.Exception as ValidatorErrors; 
 
         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-        context.Result = new ObjectResult(errors!.MessageErrors);
+        context.Result = new ObjectResult(new
+        {
+            messageErrors = errors!.MessageErrors
+        });
     }
 
     private void ThrowUnknowError(ExceptionContext context)

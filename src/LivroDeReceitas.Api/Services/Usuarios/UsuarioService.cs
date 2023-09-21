@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentValidation.Results;
 using LivroDeReceitas.Api.DTOs.Usuarios;
 using LivroDeReceitas.Api.Exceptions;
 using LivroDeReceitas.Api.Validators.Usuarios;
@@ -24,7 +25,7 @@ public class UsuarioService : IUsuarioService
 
     public async Task<CreateUsuarioResponse> CreateUsuarioAsync(CreateUsuarioRequest usuarioRequest)
     {
-        Validate(usuarioRequest);
+        await Validate(usuarioRequest);
 
         Usuario usuarioEntity = _mapper.Map<Usuario>(usuarioRequest);
         usuarioEntity.Senha = _passwordEncryptor.Encrypt(usuarioRequest.Senha);
@@ -38,10 +39,16 @@ public class UsuarioService : IUsuarioService
         };
     }
 
-    public void Validate(CreateUsuarioRequest usuarioRequest)
+    public async Task Validate(CreateUsuarioRequest usuarioRequest)
     {
         var validator = new UsuarioValidatorRequest();
         var result = validator.Validate(usuarioRequest);
+
+        var existsByEmail = await _usuarioData.ExistsByEmail(usuarioRequest.Email);
+        if (existsByEmail)
+        {
+            result.Errors.Add(new ValidationFailure("Email", "O e-mail informado já está cadastrado"));
+        }
 
         if (!result.IsValid)
         {
