@@ -9,7 +9,7 @@ public class UsuarioValidatorRequest : AbstractValidator<CreateUsuarioRequest>
 {
     public UsuarioValidatorRequest()
     {
-        RuleFor(x => x.Nome).NotEmpty().WithMessage($"O campo 'Nome' é obrigatório");
+        RuleFor(x => x.Nome).NotEmpty().WithMessage("O campo 'Nome' é obrigatório");
         RuleFor(x => x.Email).NotEmpty().WithMessage("O campo 'Email' é obrigatório");
         RuleFor(x => x.Senha).NotEmpty().WithMessage("O campo 'Senha' é obrigatório");
         RuleFor(x => x.Telefone).NotEmpty().WithMessage("O campo 'Telefone' é obrigatório");
