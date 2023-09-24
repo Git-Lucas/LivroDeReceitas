@@ -23,12 +23,12 @@ public class UsuarioService : IUsuarioService
         _tokenService = tokenService;
     }
 
-    public async Task<CreateUsuarioResponse> CreateUsuarioAsync(CreateUsuarioRequest usuarioRequest)
+    public async Task<CreateUsuarioResponse> CreateUsuarioAsync(CreateUsuarioRequest createUsuarioRequest)
     {
-        await Validate(usuarioRequest);
+        await Validate(createUsuarioRequest);
 
-        Usuario usuarioEntity = _mapper.Map<Usuario>(usuarioRequest);
-        usuarioEntity.Senha = _passwordEncryptor.Encrypt(usuarioRequest.Senha);
+        Usuario usuarioEntity = _mapper.Map<Usuario>(createUsuarioRequest);
+        usuarioEntity.Senha = _passwordEncryptor.Encrypt(createUsuarioRequest.Senha);
         await _usuarioData.CreateAsync(usuarioEntity);
 
         var token = _tokenService.GenerateToken(usuarioEntity.Email);

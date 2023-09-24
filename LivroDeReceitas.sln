@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivroDeReceitas.Api", "src\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LivroDeReceitas.Tests", "LivroDeReceitas.Tests", "{817A4921-2972-4CBF-9FA3-65B4AF8CFEBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivroDeReceitas.Api.Test", "src\Teste\LivroDeReceitas.Api.Test\LivroDeReceitas.Api.Test.csproj", "{B7F95FB7-8D9C-4319-99D6-46875B93E764}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivroDeReceitas.Api.Test", "src\Teste\LivroDeReceitas.Api.Test\LivroDeReceitas.Api.Test.csproj", "{B7F95FB7-8D9C-4319-99D6-46875B93E764}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Util", "src\Teste\Util\Util.csproj", "{16837A75-B25C-4C0A-8010-BDD304882224}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Util", "src\Teste\Util\Util.csproj", "{16837A75-B25C-4C0A-8010-BDD304882224}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
