@@ -1,3 +1,12 @@
 global using Xunit;
 global using LivroDeReceitas.Api.Validators.Usuarios;
 global using Util.Requests;
+global using AutoMapper;
+global using LivroDeReceitas.Api.Services.Usuarios;
+global using LivroDeReceitas.Domain.Interfaces.Data;
+global using Util.Mapper;
+global using Util.Repositories;
+global using LivroDeReceitas.Api.DTOs.Usuarios;
+global using LivroDeReceitas.Api.Exceptions;
+global using Util.Encryptor;
+global using Util.Token;
