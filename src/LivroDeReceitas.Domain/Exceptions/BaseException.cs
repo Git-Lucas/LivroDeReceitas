@@ -1,4 +1,4 @@
-﻿namespace LivroDeReceitas.Api.Exceptions;
+﻿namespace LivroDeReceitas.Domain.Exceptions;
 
 public class BaseException : SystemException
 {

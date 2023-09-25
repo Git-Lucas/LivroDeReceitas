@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using LivroDeReceitas.Api.DTOs.Usuarios;
+using LivroDeReceitas.Domain.DTOs.Usuarios;
 
 namespace Util.Requests;
 

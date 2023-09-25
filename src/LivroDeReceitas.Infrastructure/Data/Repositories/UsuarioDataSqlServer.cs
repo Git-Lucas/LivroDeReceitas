@@ -1,5 +1,5 @@
-﻿using LivroDeReceitas.Domain.Interfaces.Data;
-using LivroDeReceitas.Domain.Models;
+﻿using LivroDeReceitas.Domain.Entities;
+using LivroDeReceitas.Domain.Interfaces.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace LivroDeReceitas.Infrastructure.Data.Repositories;

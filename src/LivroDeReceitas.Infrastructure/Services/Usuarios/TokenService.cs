@@ -3,7 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace LivroDeReceitas.Api.Services.Usuarios;
+namespace LivroDeReceitas.Infrastructure.Services.Usuarios;
 
 public class TokenService
 {

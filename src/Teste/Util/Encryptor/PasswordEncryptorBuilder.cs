@@ -1,4 +1,4 @@
-﻿using LivroDeReceitas.Api.Services.Usuarios;
+﻿using LivroDeReceitas.Infrastructure.Services.Usuarios;
 
 namespace Util.Encryptor;
 
