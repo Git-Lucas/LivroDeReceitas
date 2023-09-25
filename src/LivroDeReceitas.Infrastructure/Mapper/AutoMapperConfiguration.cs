@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using LivroDeReceitas.Api.DTOs.Usuarios;
-using LivroDeReceitas.Domain.Models;
+using LivroDeReceitas.Domain.DTOs.Usuarios;
+using LivroDeReceitas.Domain.Entities;
 
-namespace LivroDeReceitas.Api.Services
+namespace LivroDeReceitas.Infrastructure.Mapper
 {
     public class AutoMapperConfiguration : Profile
     {

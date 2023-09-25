@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using LivroDeReceitas.Api.DTOs.Usuarios;
+using LivroDeReceitas.Domain.DTOs.Usuarios;
 using System.Text.RegularExpressions;
 
-namespace LivroDeReceitas.Api.Validators.Usuarios;
+namespace LivroDeReceitas.Infrastructure.Validators.Usuarios;
 
-public class UsuarioValidatorRequest : AbstractValidator<CreateUsuarioRequest> 
+public class UsuarioValidatorRequest : AbstractValidator<CreateUsuarioRequest>
 {
     public UsuarioValidatorRequest()
     {

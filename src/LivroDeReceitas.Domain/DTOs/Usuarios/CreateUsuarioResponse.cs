@@ -1,4 +1,4 @@
-﻿namespace LivroDeReceitas.Api.DTOs.Usuarios;
+﻿namespace LivroDeReceitas.Domain.DTOs.Usuarios;
 
 public class CreateUsuarioResponse
 {

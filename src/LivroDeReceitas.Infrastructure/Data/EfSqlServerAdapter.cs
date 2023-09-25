@@ -1,4 +1,4 @@
-﻿using LivroDeReceitas.Domain.Models;
+﻿using LivroDeReceitas.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 

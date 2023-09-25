@@ -1,6 +1,6 @@
-﻿using LivroDeReceitas.Api.DTOs.Usuarios;
+﻿using LivroDeReceitas.Domain.DTOs.Usuarios;
 
-namespace LivroDeReceitas.Api.Services.Usuarios;
+namespace LivroDeReceitas.Domain.Interfaces.Services;
 
 public interface IUsuarioService
 {

@@ -1,5 +1,5 @@
-﻿using LivroDeReceitas.Api.DTOs.Usuarios;
-using LivroDeReceitas.Api.Services.Usuarios;
+﻿using LivroDeReceitas.Domain.DTOs.Usuarios;
+using LivroDeReceitas.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LivroDeReceitas.Api.Controllers;

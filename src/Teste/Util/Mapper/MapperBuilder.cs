@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using LivroDeReceitas.Api.Services;
+using LivroDeReceitas.Infrastructure.Mapper;
 
 namespace Util.Mapper;
 

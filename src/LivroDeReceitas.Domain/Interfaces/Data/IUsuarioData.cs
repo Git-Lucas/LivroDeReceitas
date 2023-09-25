@@ -1,4 +1,4 @@
-﻿using LivroDeReceitas.Domain.Models;
+﻿using LivroDeReceitas.Domain.Entities;
 
 namespace LivroDeReceitas.Domain.Interfaces.Data;
 

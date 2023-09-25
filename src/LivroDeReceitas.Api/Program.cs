@@ -1,10 +1,12 @@
 using AutoMapper;
 using LivroDeReceitas.Api.Exceptions;
-using LivroDeReceitas.Api.Services;
 using LivroDeReceitas.Api.Services.Usuarios;
 using LivroDeReceitas.Domain.Interfaces.Data;
+using LivroDeReceitas.Domain.Interfaces.Services;
 using LivroDeReceitas.Infrastructure.Data;
 using LivroDeReceitas.Infrastructure.Data.Repositories;
+using LivroDeReceitas.Infrastructure.Mapper;
+using LivroDeReceitas.Infrastructure.Services.Usuarios;
 
 var builder = WebApplication.CreateBuilder(args);
 

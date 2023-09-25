@@ -1,6 +1,6 @@
 ﻿using LivroDeReceitas.Domain.Base;
 
-namespace LivroDeReceitas.Domain.Models;
+namespace LivroDeReceitas.Domain.Entities;
 
 public class Usuario : BaseEntity
 {
