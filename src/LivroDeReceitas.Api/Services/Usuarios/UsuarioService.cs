@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
 using FluentValidation.Results;
-using LivroDeReceitas.Domain.DTOs.Usuarios;
-using LivroDeReceitas.Domain.Entities;
 using LivroDeReceitas.Domain.Exceptions;
-using LivroDeReceitas.Domain.Interfaces.Data;
-using LivroDeReceitas.Domain.Interfaces.Services;
+using LivroDeReceitas.Domain.Usuarios;
+using LivroDeReceitas.Domain.Usuarios.DTOs.Usuarios;
 using LivroDeReceitas.Infrastructure.Services.Usuarios;
 using LivroDeReceitas.Infrastructure.Validators.Usuarios;
 

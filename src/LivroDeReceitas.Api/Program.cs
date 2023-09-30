@@ -1,8 +1,7 @@
 using AutoMapper;
 using LivroDeReceitas.Api.Exceptions;
 using LivroDeReceitas.Api.Services.Usuarios;
-using LivroDeReceitas.Domain.Interfaces.Data;
-using LivroDeReceitas.Domain.Interfaces.Services;
+using LivroDeReceitas.Domain.Usuarios;
 using LivroDeReceitas.Infrastructure.Data;
 using LivroDeReceitas.Infrastructure.Data.Repositories;
 using LivroDeReceitas.Infrastructure.Mapper;

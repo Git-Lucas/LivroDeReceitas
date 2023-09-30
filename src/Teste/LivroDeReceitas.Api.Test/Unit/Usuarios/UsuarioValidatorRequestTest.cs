@@ -1,4 +1,4 @@
-﻿namespace LivroDeReceitas.Api.Test.Unit.Validators.Usuarios;
+﻿namespace LivroDeReceitas.Api.Test.Unit.Usuarios;
 
 public class UsuarioValidatorRequestTest
 {

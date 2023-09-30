@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using LivroDeReceitas.Domain.DTOs.Usuarios;
-using LivroDeReceitas.Domain.Entities;
+using LivroDeReceitas.Domain.Usuarios;
+using LivroDeReceitas.Domain.Usuarios.DTOs.Usuarios;
 
 namespace LivroDeReceitas.Infrastructure.Mapper
 {

@@ -1,4 +1,4 @@
-﻿using LivroDeReceitas.Domain.Entities;
+﻿using LivroDeReceitas.Domain.Usuarios;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 

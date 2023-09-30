@@ -1,6 +1,4 @@
-﻿using LivroDeReceitas.Domain.Entities;
-
-namespace LivroDeReceitas.Domain.Interfaces.Data;
+﻿namespace LivroDeReceitas.Domain.Usuarios;
 
 public interface IUsuarioData
 {

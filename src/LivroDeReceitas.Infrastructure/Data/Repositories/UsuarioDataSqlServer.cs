@@ -1,5 +1,4 @@
-﻿using LivroDeReceitas.Domain.Entities;
-using LivroDeReceitas.Domain.Interfaces.Data;
+﻿using LivroDeReceitas.Domain.Usuarios;
 using Microsoft.EntityFrameworkCore;
 
 namespace LivroDeReceitas.Infrastructure.Data.Repositories;
