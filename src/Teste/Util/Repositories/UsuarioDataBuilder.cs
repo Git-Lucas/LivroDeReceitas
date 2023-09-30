@@ -5,7 +5,7 @@ namespace Util.Repositories;
 
 public class UsuarioDataBuilder
 {
-    private static UsuarioDataBuilder _instance;
+    private static UsuarioDataBuilder? _instance;
     private readonly Mock<IUsuarioData> _usuarioData;
 
     public UsuarioDataBuilder()
