@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using LivroDeReceitas.Domain.DTOs.Usuarios;
+using LivroDeReceitas.Domain.Usuarios.DTOs.Usuarios;
 using System.Text.RegularExpressions;
 
 namespace LivroDeReceitas.Infrastructure.Validators.Usuarios;
