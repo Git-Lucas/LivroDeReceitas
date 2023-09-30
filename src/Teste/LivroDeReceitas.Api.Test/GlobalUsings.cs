@@ -1,11 +1,9 @@
 global using Xunit;
 global using Util.Requests;
-global using AutoMapper;
-global using LivroDeReceitas.Api.Services.Usuarios;
-global using Util.Mapper;
-global using Util.Repositories;
-global using Util.Encryptor;
-global using Util.Token;
 global using LivroDeReceitas.Infrastructure.Validators.Usuarios;
 global using LivroDeReceitas.Domain.Exceptions;
-global using LivroDeReceitas.Infrastructure.Services.Usuarios;
+global using LivroDeReceitas.Domain.Usuarios;
+global using LivroDeReceitas.Domain.Usuarios.DTOs.Usuarios;
+global using Util.Services;
+global using LivroDeReceitas.Api.Controllers;
+global using Microsoft.AspNetCore.Mvc;

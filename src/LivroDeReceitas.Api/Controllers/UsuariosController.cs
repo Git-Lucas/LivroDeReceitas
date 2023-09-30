@@ -19,7 +19,7 @@ public class UsuariosController : ControllerBase
     [ProducesResponseType(typeof(CreateUsuarioResponse), StatusCodes.Status201Created)]
     public async Task<IActionResult> CreateUsuarioAsync([FromBody] CreateUsuarioRequest request)
     {
-        var response = await _usuarioService.CreateUsuarioAsync(request);
+        CreateUsuarioResponse response = await _usuarioService.CreateUsuarioAsync(request);
 
         return Created(string.Empty, response);
     }
