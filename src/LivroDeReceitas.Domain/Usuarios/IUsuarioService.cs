@@ -1,4 +1,4 @@
-﻿using LivroDeReceitas.Domain.Usuarios.DTOs.Usuarios;
+﻿using LivroDeReceitas.Domain.Usuarios.DTOs;
 
 namespace LivroDeReceitas.Domain.Usuarios;
 

@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using FluentValidation.Results;
 using LivroDeReceitas.Domain.Exceptions;
+using LivroDeReceitas.Domain.Login;
 using LivroDeReceitas.Domain.Usuarios;
-using LivroDeReceitas.Domain.Usuarios.DTOs.Usuarios;
-using LivroDeReceitas.Infrastructure.Services.Usuarios;
+using LivroDeReceitas.Domain.Usuarios.DTOs;
 using LivroDeReceitas.Infrastructure.Validators.Usuarios;
 
 namespace LivroDeReceitas.Api.Services.Usuarios;
@@ -12,10 +12,10 @@ public class UsuarioService : IUsuarioService
 {
     private readonly IUsuarioData _usuarioData;
     private readonly IMapper _mapper;
-    private readonly PasswordEncryptor _passwordEncryptor;
-    private readonly TokenService _tokenService;
+    private readonly IPasswordEncryptor _passwordEncryptor;
+    private readonly ITokenService _tokenService;
 
-    public UsuarioService(IUsuarioData usuarioData, IMapper mapper, PasswordEncryptor passwordEncryptor, TokenService tokenService)
+    public UsuarioService(IUsuarioData usuarioData, IMapper mapper, IPasswordEncryptor passwordEncryptor, ITokenService tokenService)
     {
         _usuarioData = usuarioData;
         _mapper = mapper;

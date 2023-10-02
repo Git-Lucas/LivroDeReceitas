@@ -1,4 +1,6 @@
-﻿namespace LivroDeReceitas.Api.Test.Integration.Usuarios;
+﻿using LivroDeReceitas.Domain.Usuarios.DTOs;
+
+namespace LivroDeReceitas.Api.Test.Integration.Usuarios;
 
 public class UsuarioServiceTest
 {

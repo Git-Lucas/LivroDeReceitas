@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LivroDeReceitas.Api.Services.Usuarios;
+using LivroDeReceitas.Domain.Login;
 using LivroDeReceitas.Domain.Usuarios;
 using LivroDeReceitas.Infrastructure.Services.Usuarios;
 using Util.Encryptor;
@@ -15,8 +16,8 @@ namespace Util.Services
         {
             IUsuarioData usuarioData = UsuarioDataBuilder.Instance().ExistsByEmail(email).Build();
             IMapper mapper = MapperBuilder.Instance();
-            PasswordEncryptor passwordEncryptor = PasswordEncryptorBuilder.Instance();
-            TokenService tokenService = TokenServiceBuilder.Instance();
+            IPasswordEncryptor passwordEncryptor = PasswordEncryptorBuilder.Instance();
+            ITokenService tokenService = TokenServiceBuilder.Instance();
 
             return new UsuarioService(usuarioData, mapper, passwordEncryptor, tokenService);
         }

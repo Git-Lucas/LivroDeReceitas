@@ -1,9 +1,10 @@
-﻿using System.Security.Cryptography;
+﻿using LivroDeReceitas.Domain.Login;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace LivroDeReceitas.Infrastructure.Services.Usuarios;
 
-public class PasswordEncryptor
+public class PasswordEncryptor : IPasswordEncryptor
 {
     public string Encrypt(string senha)
     {

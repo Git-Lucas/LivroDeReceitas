@@ -1,11 +1,12 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using LivroDeReceitas.Domain.Login;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
 namespace LivroDeReceitas.Infrastructure.Services.Usuarios;
 
-public class TokenService
+public class TokenService : ITokenService
 {
     private readonly string _key;
     private readonly byte[] _keyInBytes;
