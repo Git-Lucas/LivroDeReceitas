@@ -1,4 +1,5 @@
-﻿using LivroDeReceitas.Domain.Usuarios;
+﻿using LivroDeReceitas.Domain.Exceptions;
+using LivroDeReceitas.Domain.Usuarios;
 using Microsoft.EntityFrameworkCore;
 
 namespace LivroDeReceitas.Infrastructure.Data.Repositories;
@@ -18,8 +19,21 @@ public class UsuarioDataSqlServer : IUsuarioData
         await _context.SaveChangesAsync();
     }
 
-    public async Task<bool> ExistsByEmail(string email)
+    public async Task<bool> ExistsByEmail(string email) =>
+        await _context.Usuarios
+            .AnyAsync(x => x.Email.Equals(email));
+
+    public async Task<Usuario> GetByEmailESenha(string email, string senha)
     {
-        return await _context.Usuarios.AnyAsync(x => x.Email.Equals(email));
+        var result = await _context.Usuarios
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Email.Equals(email) && x.Senha.Equals(senha));
+
+        if (result is null)
+        {
+            throw new RepositoryErrors("Usuário ou senha inválidos.");
+        }
+
+        return result;
     }
 }
