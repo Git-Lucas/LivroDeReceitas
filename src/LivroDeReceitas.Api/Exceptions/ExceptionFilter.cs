@@ -25,17 +25,34 @@ public class ExceptionFilter : IExceptionFilter
         {
             ThrowValidatorsErrors(context);
         }
+        else if (context.Exception is RepositoryErrors)
+        {
+            ThrowRepositoryErrors(context);
+        }
     }
 
     private void ThrowValidatorsErrors(ExceptionContext context)
     {
-        var errors = context.Exception as ValidatorErrors; 
+        ValidatorErrors? errors = context.Exception as ValidatorErrors;
 
         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
         context.Result = new ObjectResult(new
         {
             messageErrors = errors!.MessageErrors
         });
+    }
+
+    private void ThrowRepositoryErrors(ExceptionContext context)
+    {
+        if (context.Exception is InvalidLoginError)
+        {
+            InvalidLoginError? error = context.Exception as InvalidLoginError;
+
+            context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+
+            if (error != null)
+                context.Result = new ObjectResult(error.MessageError);
+        }
     }
 
     private void ThrowUnknowError(ExceptionContext context)

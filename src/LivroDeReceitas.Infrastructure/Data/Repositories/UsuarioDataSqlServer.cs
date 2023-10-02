@@ -23,7 +23,7 @@ public class UsuarioDataSqlServer : IUsuarioData
         await _context.Usuarios
             .AnyAsync(x => x.Email.Equals(email));
 
-    public async Task<Usuario> GetByEmailESenha(string email, string senha)
+    public async Task<Usuario> GetByEmailESenhaAsync(string email, string senha)
     {
         var result = await _context.Usuarios
             .AsNoTracking()
@@ -31,7 +31,7 @@ public class UsuarioDataSqlServer : IUsuarioData
 
         if (result is null)
         {
-            throw new RepositoryErrors("Usuário ou senha inválidos.");
+            throw new InvalidLoginError("Usuário ou senha inválidos.");
         }
 
         return result;
