@@ -17,7 +17,7 @@ public class LoginService : ILoginService
         _passwordEncryptor = passwordEncryptor;
     }
 
-    public async Task<ResponseLogin> Login(RequestLogin requestLogin)
+    public async Task<ResponseLogin> LoginAsync(RequestLogin requestLogin)
     {
         string encryptedSenha = _passwordEncryptor.Encrypt(requestLogin.SenhaUsuario);
         Usuario usuario = await _usuarioData.GetByEmailESenhaAsync(requestLogin.EmailUsuario, encryptedSenha);
