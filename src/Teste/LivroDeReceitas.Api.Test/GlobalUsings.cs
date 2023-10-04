@@ -6,3 +6,5 @@ global using LivroDeReceitas.Domain.Usuarios;
 global using Util.Services;
 global using LivroDeReceitas.Api.Controllers;
 global using Microsoft.AspNetCore.Mvc;
+global using LivroDeReceitas.Domain.Usuarios.DTOs;
+global using Util.Validators;

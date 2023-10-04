@@ -2,7 +2,6 @@
 using LivroDeReceitas.Api.Services.Usuarios;
 using LivroDeReceitas.Domain.Login;
 using LivroDeReceitas.Domain.Usuarios;
-using LivroDeReceitas.Infrastructure.Services.Usuarios;
 using Util.Encryptor;
 using Util.Mapper;
 using Util.Repositories;
