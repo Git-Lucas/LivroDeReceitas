@@ -41,14 +41,8 @@ public class UsuarioService : IUsuarioService
 
     public async Task Validate(CreateUsuarioRequest usuarioRequest)
     {
-        var validator = new UsuarioValidatorRequest();
-        var result = validator.Validate(usuarioRequest);
-
-        var existsByEmail = await _usuarioData.ExistsByEmail(usuarioRequest.Email);
-        if (existsByEmail)
-        {
-            result.Errors.Add(new ValidationFailure("Email", "O e-mail informado já está cadastrado"));
-        }
+        var validator = new UsuarioValidatorRequest(_usuarioData);
+        var result = await validator.ValidateAsync(usuarioRequest);
 
         if (!result.IsValid)
         {

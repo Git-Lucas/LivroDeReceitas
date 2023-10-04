@@ -3,84 +3,97 @@
 public class UsuarioValidatorRequestTest
 {
     [Fact]
-    public void ValidateSucces()
+    public async Task ValidateSucces()
     {
-        var usuarioValidatorRequest = new UsuarioValidatorRequest();
-        var request = CreateUsuarioRequestBuilder.Build();
+        UsuarioValidatorRequest usuarioValidatorRequest = UsuarioValidatorRequestBuilder.Instance();
+        CreateUsuarioRequest createUsuarioRequest = CreateUsuarioRequestBuilder.Build();
 
-        var result = usuarioValidatorRequest.Validate(request);
+        var result = await usuarioValidatorRequest.ValidateAsync(createUsuarioRequest);
 
         Assert.True(result.IsValid);
     }
 
     [Fact]
-    public void ValidateEmptyName()
+    public async Task ValidateEmptyName()
     {
-        var usuarioValidatorRequest = new UsuarioValidatorRequest();
-        var request = CreateUsuarioRequestBuilder.Build();
-        request.Nome = string.Empty;
+        UsuarioValidatorRequest usuarioValidatorRequest = UsuarioValidatorRequestBuilder.Instance();
+        CreateUsuarioRequest createUsuarioRequest = CreateUsuarioRequestBuilder.Build();
+        createUsuarioRequest.Nome = string.Empty;
 
-        var result = usuarioValidatorRequest.Validate(request);
+        var result = await usuarioValidatorRequest.ValidateAsync(createUsuarioRequest);
 
         Assert.False(result.IsValid);
         Assert.Single(result.Errors);
-        Assert.Equal("O campo 'Nome' é obrigatório", result.Errors.First().ErrorMessage);
+        Assert.Equal($"O campo '{nameof(createUsuarioRequest.Nome)}' é obrigatório", result.Errors.First().ErrorMessage);
     }
 
     [Fact]
-    public void ValidateEmptyEmail()
+    public async Task ValidateEmptyEmail()
     {
-        var usuarioValidatorRequest = new UsuarioValidatorRequest();
-        var request = CreateUsuarioRequestBuilder.Build();
-        request.Email = string.Empty;
+        UsuarioValidatorRequest usuarioValidatorRequest = UsuarioValidatorRequestBuilder.Instance();
+        CreateUsuarioRequest createUsuarioRequest = CreateUsuarioRequestBuilder.Build();
+        createUsuarioRequest.Email = string.Empty;
 
-        var result = usuarioValidatorRequest.Validate(request);
+        var result = await usuarioValidatorRequest.ValidateAsync(createUsuarioRequest);
 
         Assert.False(result.IsValid);
         Assert.Single(result.Errors);
-        Assert.Equal("O campo 'Email' é obrigatório", result.Errors.First().ErrorMessage);
+        Assert.Equal($"O campo '{nameof(createUsuarioRequest.Email)}' é obrigatório", result.Errors.First().ErrorMessage);
     }
 
     [Fact]
-    public void ValidateEmptySenha()
+    public async Task ValidateEmptySenha()
     {
-        var usuarioValidatorRequest = new UsuarioValidatorRequest();
-        var request = CreateUsuarioRequestBuilder.Build();
-        request.Senha = string.Empty;
+        UsuarioValidatorRequest usuarioValidatorRequest = UsuarioValidatorRequestBuilder.Instance();
+        CreateUsuarioRequest createUsuarioRequest = CreateUsuarioRequestBuilder.Build();
+        createUsuarioRequest.Senha = string.Empty;
 
-        var result = usuarioValidatorRequest.Validate(request);
+        var result = await usuarioValidatorRequest.ValidateAsync(createUsuarioRequest);
 
         Assert.False(result.IsValid);
         Assert.Single(result.Errors);
-        Assert.Equal("O campo 'Senha' é obrigatório", result.Errors.First().ErrorMessage);
+        Assert.Equal($"O campo '{nameof(createUsuarioRequest.Senha)}' é obrigatório", result.Errors.First().ErrorMessage);
     }
 
     [Fact]
-    public void ValidateEmptyTelefone()
+    public async Task ValidateEmptyTelefone()
     {
-        var usuarioValidatorRequest = new UsuarioValidatorRequest();
-        var request = CreateUsuarioRequestBuilder.Build();
-        request.Telefone = string.Empty;
+        UsuarioValidatorRequest usuarioValidatorRequest = UsuarioValidatorRequestBuilder.Instance();
+        CreateUsuarioRequest createUsuarioRequest = CreateUsuarioRequestBuilder.Build();
+        createUsuarioRequest.Telefone = string.Empty;
 
-        var result = usuarioValidatorRequest.Validate(request);
+        var result = await usuarioValidatorRequest.ValidateAsync(createUsuarioRequest);
 
         Assert.False(result.IsValid);
         Assert.Single(result.Errors);
-        Assert.Equal("O campo 'Telefone' é obrigatório", result.Errors.First().ErrorMessage);
+        Assert.Equal($"O campo '{nameof(createUsuarioRequest.Telefone)}' é obrigatório", result.Errors.First().ErrorMessage);
     }
 
     [Fact]
-    public void ValidateInvalidEmail()
+    public async Task ValidateInvalidEmail()
     {
-        var usuarioValidatorRequest = new UsuarioValidatorRequest();
-        var request = CreateUsuarioRequestBuilder.Build();
-        request.Email = "lucasgmail.com";
+        UsuarioValidatorRequest usuarioValidatorRequest = UsuarioValidatorRequestBuilder.Instance();
+        CreateUsuarioRequest createUsuarioRequest = CreateUsuarioRequestBuilder.Build();
+        createUsuarioRequest.Email = "lucasgmail.com";
 
-        var result = usuarioValidatorRequest.Validate(request);
+        var result = await usuarioValidatorRequest.ValidateAsync(createUsuarioRequest);
 
         Assert.False(result.IsValid);
         Assert.Single(result.Errors);
         Assert.Equal("E-mail inválido", result.Errors.First().ErrorMessage);
+    }
+
+    [Fact]
+    public async Task ValidateExistingEmail()
+    {
+        CreateUsuarioRequest request = CreateUsuarioRequestBuilder.Build();
+        UsuarioValidatorRequest usuarioValidatorRequest = UsuarioValidatorRequestBuilder.Instance(request.Email);
+
+        var result = await usuarioValidatorRequest.ValidateAsync(request);
+
+        Assert.False(result.IsValid);
+        Assert.Single(result.Errors);
+        Assert.Equal("O e-mail informado já está cadastrado", result.Errors.First().ErrorMessage);
     }
 
     [Theory]
@@ -89,12 +102,12 @@ public class UsuarioValidatorRequestTest
     [InlineData(3)]
     [InlineData(4)]
     [InlineData(5)]
-    public void ValidateInvalidSenha(int lengthSenha)
+    public async Task ValidateInvalidSenha(int lengthSenha)
     {
-        var usuarioValidatorRequest = new UsuarioValidatorRequest();
-        var request = CreateUsuarioRequestBuilder.Build(lengthSenha);
+        UsuarioValidatorRequest usuarioValidatorRequest = UsuarioValidatorRequestBuilder.Instance();
+        CreateUsuarioRequest createUsuarioRequest = CreateUsuarioRequestBuilder.Build(lengthSenha);
 
-        var result = usuarioValidatorRequest.Validate(request);
+        var result = await usuarioValidatorRequest.ValidateAsync(createUsuarioRequest);
 
         Assert.False(result.IsValid);
         Assert.Single(result.Errors);
@@ -102,13 +115,13 @@ public class UsuarioValidatorRequestTest
     }
 
     [Fact]
-    public void ValidateInvalidTelefone()
+    public async Task ValidateInvalidTelefone()
     {
-        var usuarioValidatorRequest = new UsuarioValidatorRequest();
-        var request = CreateUsuarioRequestBuilder.Build();
-        request.Telefone = "31 9 0199-1298";
+        UsuarioValidatorRequest usuarioValidatorRequest = UsuarioValidatorRequestBuilder.Instance();
+        CreateUsuarioRequest createUsuarioRequest = CreateUsuarioRequestBuilder.Build();
+        createUsuarioRequest.Telefone = "31 9 0199-1298";
 
-        var result = usuarioValidatorRequest.Validate(request);
+        var result = await usuarioValidatorRequest.ValidateAsync(createUsuarioRequest);
 
         Assert.False(result.IsValid);
         Assert.Single(result.Errors);

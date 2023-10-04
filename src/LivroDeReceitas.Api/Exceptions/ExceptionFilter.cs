@@ -51,7 +51,10 @@ public class ExceptionFilter : IExceptionFilter
             context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
 
             if (error != null)
-                context.Result = new ObjectResult(error.MessageError);
+                context.Result = new ObjectResult(new
+                {
+                    messageError = error.MessageError
+                });
         }
     }
 
