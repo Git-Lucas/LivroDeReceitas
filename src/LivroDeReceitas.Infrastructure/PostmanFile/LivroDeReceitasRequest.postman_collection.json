@@ -7,24 +7,8 @@
 	},
 	"item": [
 		{
-			"name": "CreateUsuario",
+			"name": "CreateUsuarioSuccess",
 			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							"//31 98888-8888\r",
-							"var ddd = _.random(10, 99)\r",
-							"var first5digits = _.random(10000, 99999)\r",
-							"var last4digits = _.random(1000, 9999)\r",
-							"\r",
-							"var phone = ddd + \" \" + first5digits + \"-\" + last4digits\r",
-							"\r",
-							"pm.environment.set(\"randomPhoneBR\", phone)"
-						],
-						"type": "text/javascript"
-					}
-				},
 				{
 					"listen": "test",
 					"script": {
@@ -36,6 +20,27 @@
 						],
 						"type": "text/javascript"
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var ddd = _.random(10, 99)\r",
+							"var first5digits = _.random(10000, 99999)\r",
+							"var last4digits = _.random(0001, 9999)\r",
+							"\r",
+							"var phone = ddd + \" \" + first5digits + \"-\" + last4digits\r",
+							"\r",
+							"pm.environment.set(\"randomPhoneBR\", phone)\r",
+							"\r",
+							"let email = pm.variables.replaceIn('{{$randomEmail}}')\r",
+							"let senha = pm.variables.replaceIn('{{$randomPassword}}')\r",
+							"\r",
+							"postman.setGlobalVariable(\"EMAIL\", email)\r",
+							"postman.setGlobalVariable(\"SENHA\", senha)"
+						],
+						"type": "text/javascript"
+					}
 				}
 			],
 			"request": {
@@ -43,7 +48,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"nome\": \"{{$randomFullName}}\",\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"telefone\": \"{{randomPhoneBR}}\",\r\n  \"senha\": \"{{$randomPassword}}\"\r\n}",
+					"raw": "{\r\n  \"nome\": \"{{$randomFullName}}\",\r\n  \"email\": \"{{EMAIL}}\",\r\n  \"telefone\": \"{{randomPhoneBR}}\",\r\n  \"senha\": \"{{SENHA}}\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -51,9 +56,102 @@
 					}
 				},
 				"url": {
-					"raw": "{{BASE_URL}}usuarios",
+					"raw": "{{BASE_URL}}/usuarios",
 					"host": [
-						"{{BASE_URL}}usuarios"
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoginUsuarioSuccess",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Login na API (success)\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody(\"nomeUsuario\");\r",
+							"    pm.response.to.have.jsonBody(\"tokenUsuario\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"emailUsuario\": \"{{EMAIL}}\", \r\n    \"senhaUsuario\": \"{{SENHA}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/login",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoginUsuarioError",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Login na API (error)\", function(){\r",
+							"    pm.response.to.have.status(401);\r",
+							"    pm.response.to.have.jsonBody(\"messageError\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"emailUsuario\": \"{{$randomEmail}}\", \r\n    \"senhaUsuario\": \"{{$randomPassword}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/login",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"login"
 					]
 				}
 			},
@@ -83,7 +181,7 @@
 	"variable": [
 		{
 			"key": "BASE_URL",
-			"value": "https://localhost:7297/",
+			"value": "https://localhost:7297",
 			"type": "string"
 		}
 	]
